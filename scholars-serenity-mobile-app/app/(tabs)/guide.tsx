@@ -11,7 +11,7 @@ export default function GuideScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f4c2c2',
+    backgroundColor: '#f7b9d7',
     justifyContent: 'center',
     alignItems: 'center',
   },
