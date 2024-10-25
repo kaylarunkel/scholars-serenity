@@ -35,6 +35,24 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="activities"
+        options={{
+          title: "Mindfulness",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'heart' : 'heart-outline'} color={color} size={24} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="journal"
+        options={{
+          title: "Journal",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'mail-open' : 'mail-open-outline'} color={color} size={24} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
