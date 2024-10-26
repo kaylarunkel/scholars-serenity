@@ -8,12 +8,12 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: '#000',
         headerStyle: {
-          backgroundColor: 'fff'
+          backgroundColor: '#fdfce8',
         },
         headerShadowVisible: false,
-        headerTintColor: '#000',
+        headerTintColor: '#036da4',
         tabBarStyle: {
-          backgroundColor: '#fff'
+          backgroundColor: '#fdfce8'
         },
       }}
     >
@@ -21,7 +21,6 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
           ),
@@ -59,7 +58,7 @@ export default function TabLayout() {
         options={{
           title: 'Info',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24}/>
+            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24} />
           ),
         }}
       />
