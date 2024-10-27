@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
 import { useFonts } from 'expo-font';
+import { useNavigation } from '@react-navigation/native';
+import { Link } from 'expo-router';
+
 
 export default function Activities() {
 
   const [stage, setStage] = useState(1);
 
   const [done, setDone] = useState(false);
+
+  const navigation = useNavigation();
 
   type Sense = 'see' | 'touch' | 'hear' | 'smell' | 'taste';
 
@@ -36,12 +41,36 @@ export default function Activities() {
     }
   };
 
+  const restart = () => {
+    setStage(1);
+    setDone(false);
+    setActivity({
+      see: ['', '', '', '', ''],
+      touch: ['', '', '', ''],
+      hear: ['', '', ''],
+      smell: ['', ''],
+      taste: ['']
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>5-4-3-2-1 Grounding</Text>
 
       {done ? (
-        <Text style={styles.motivation}>We are so proud of you for completing the 5-4-3-2-1 Grounding activity. Take a moment to feel proud of yourself, too!</Text>
+        <>
+          <Text style={styles.motivation}>We are so proud of you for completing the 5-4-3-2-1 Grounding activity. Take a moment to feel proud of yourself, too!</Text>
+          <View style={{ marginTop: 20, marginBottom: 20 }}>
+            <Button
+              title='Restart'
+              onPress={restart}
+              color='#036da4'
+            />
+          </View>
+          <Link href="/guide" style={styles.button}>
+            Return to Guide
+          </Link>
+        </>
       ) : (<>
 
         {stage == 1 && (<>
@@ -160,5 +189,10 @@ const styles = StyleSheet.create({
     color: '#036da4',
     textAlign: 'center',
     marginTop: 20,
+  },
+  button: {
+    fontSize: 20,
+    textDecorationLine: 'underline',
+    color: '#5ea3c0',
   }
 });
