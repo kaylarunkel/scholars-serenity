@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Pressable } from 'react-native';
 import * as Font from 'expo-font';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
@@ -61,11 +61,9 @@ export default function Activities() {
         <>
           <Text style={styles.motivation}>We are so proud of you for completing the 5-4-3-2-1 Grounding activity. Take a moment to feel proud of yourself, too!</Text>
           <View style={{ marginTop: 20, marginBottom: 20 }}>
-            <Button
-              title='Restart'
-              onPress={restart}
-              color='#036da4'
-            />
+            <Pressable style={styles.button} onPress={restart}>
+              <Text style={styles.text}>Restart</Text>
+            </Pressable>
           </View>
           <Link href="/guide" style={styles.button}>
             Return to Guide
@@ -144,7 +142,7 @@ export default function Activities() {
           </>
         )}
 
-        <Button title={stage < 5 ? "Next" : "Submit"} onPress={handleNext} color="#5ea3c0" />
+        <Button title={stage < 5 ? "Next" : "Done"} onPress={handleNext} color="#5ea3c0" />
       </>)}
     </View>
   );
@@ -191,8 +189,20 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    fontSize: 20,
-    textDecorationLine: 'underline',
-    color: '#5ea3c0',
+    backgroundColor: '#dbebe2',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    //marginTop: 10,
+    //marginBottom: 20,
+    alignItems: 'center',
+    color: '#036da4',
+    fontWeight: 'bold',
+    borderWidth: 2,
+    borderColor: '#b9d9dc'
+  },
+  text: {
+    color: '#036da4',
+    fontWeight: 'bold',
   }
 });
