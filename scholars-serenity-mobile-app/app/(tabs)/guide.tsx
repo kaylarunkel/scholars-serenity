@@ -6,7 +6,7 @@ export default function GuideScreen() {
     <View style={styles.container}>
       <Text style={styles.titleText}>Whatever you need, we are here for you!</Text>
       <Link href="/activities" style={styles.button}>
-        <Text style={styles.buttonText}>5-4-3-2-1 Grounding</Text></Link>
+        <Text style={styles.buttonText}>Mindfulness</Text></Link>
       <Link href="/journal" style={styles.button}>
         <Text style={styles.buttonText}>Journal</Text></Link>
     </View>

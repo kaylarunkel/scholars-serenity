@@ -62,6 +62,20 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="grounding"
+        options={{
+          title: "Grounding",
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="breathing"
+        options={{
+          title: "Breathing",
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
