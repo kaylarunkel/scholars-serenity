@@ -1,101 +1,21 @@
-/*import React, { useState } from 'react';
-import { Text, TextInput, StyleSheet, Pressable, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-const JournalInput = () => {
-  const [inputValue, setInputValue] = useState(''); //state for input
-  const [savedText, setSavedText] = useState(''); //state for saved text
-
-  const handleSave = () => {
-    setSavedText(inputValue); //save the input value
-    setInputValue(''); //clear the input field
-  }
-    return (
-        <SafeAreaView
-            style={{
-              paddingTop: 20,
-              flex: 1, 
-              borderBottomColor: 'transparent',
-              borderBottomWidth: 1,
-              alignItems: 'center',
-              backgroundColor: '#fdfce8'
-              }}>
-              <TextInput
-              style={style.input}
-              keyboardType='default'
-              placeholder='Start typing here...'
-              placeholderTextColor='gray'
-              multiline={true}
-              value={inputValue}
-              onChangeText={setInputValue}
-              />
-              <Pressable style={style.button} onPress={handleSave}>
-                <Text style={style.text}>Save</Text>
-              </Pressable>
-              {savedText ? ( // Conditionally render the saved text
-                  <View style={style.savedBox}>
-                      <Text style={style.savedText}>{savedText}</Text>
-                  </View>
-              ) : null}
-            </SafeAreaView>
-    );
-}; 
-
-
-const style = StyleSheet.create({
-input: {
-  paddingTop: 10,
-  paddingBottom: 10,
-  paddingHorizontal: 10,
-  width: 500,
-  height: 400,
-  borderRadius: 5,
-  borderWidth: 1,
-},
-button: {
-  backgroundColor: '#8bbcdf',
-  paddingVertical: 10,
-  paddingHorizontal: 32,
-  borderRadius: 4,
-  elevation: 3,
-  marginBottom: 10
-},
-text: {
-  fontSize: 16,
-  lineHeight: 21,
-  letterSpacing: 0.25,
-  color: 'white',
-},
-savedBox: {
-  borderWidth: 1,
-  borderColor: '#8bbcdf',
-  borderRadius: 5,
-  padding: 10,
-  marginTop: 10,
-  backgroundColor: '#e1f5fe',
-  width: '90%', // Adjust width to match input
-},
-savedText: {
-  fontSize: 16,
-  color: '#333',
-},
-});
-
-export default JournalInput;
-*/
 import React, { useState } from 'react';
 import { Text, TextInput, StyleSheet, Pressable, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+interface JournalEntry {
+  title: string;
+  entry: string;
+}
 const JournalInput = () => {
-    const [inputValue, setInputValue] = useState(''); // State for the current input
-    const [savedEntries, setSavedEntries] = useState<string[]>([]); // State for all saved entries
-
+    const [inputValue, setInputValue] = useState<string>(''); // State for the current input
+    const [savedEntries, setSavedEntries] = useState<JournalEntry[]>([]); // State for all saved entries
+    const [titleValue, setTitleValue] = useState<string>('');
     const handleSave = () => {
-        if (inputValue.trim()) { // Only save if input is not empty
-            setSavedEntries([...savedEntries, inputValue]); // Add new entry to the list
-            setInputValue(''); // Clear the input field
-        }
+        if (inputValue.trim() && titleValue.trim()) { // Only save if input is not empty
+            setSavedEntries([...savedEntries, {title: titleValue, entry: inputValue}]); // Add new entry to the list
+            setInputValue(''); // Clears the input field
+            setTitleValue(''); // Clears title value
+          }
     };
 
     return (
@@ -108,6 +28,19 @@ const JournalInput = () => {
               alignItems: 'center',
               backgroundColor: '#fdfce8'
             }}>
+              <Text> Write about your favorite thing to do on a day off. Why is it your favorite?</Text>
+              <Text> Describe someone in your life who you most appreciate.</Text>
+              <Text> Write about something that made you smile recently.</Text>
+              <br></br>
+              <Pressable style={style.button}> Generate more</Pressable>
+              <TextInput
+                style={style.title}
+                keyboardType='default'
+                placeholder='Title'
+                placeholderTextColor='gray'
+                value={titleValue}
+                onChangeText={setTitleValue}
+              />
               <TextInput
                   style={style.input}
                   keyboardType='default'
@@ -124,7 +57,8 @@ const JournalInput = () => {
               <ScrollView style={style.entriesContainer}>
                   {savedEntries.map((entry, index) => (
                       <View key={index} style={style.savedBox}>
-                          <Text style={style.savedText}>{entry}</Text>
+                      <Text style={style.savedText}><strong>{entry.title}</strong></Text>
+                      <Text>{entry.entry}</Text>
                       </View>
                   ))}
               </ScrollView>
@@ -133,6 +67,16 @@ const JournalInput = () => {
 }; 
 
 const style = StyleSheet.create({
+    title: {
+      paddingTop: 5,
+        paddingBottom: 5,
+        paddingHorizontal: 10,
+        width: '90%', 
+        height: 40, 
+        borderRadius: 5,
+        borderWidth: 1,
+        marginBottom: 5,
+    },
     input: {
         paddingTop: 10,
         paddingBottom: 10,
@@ -144,7 +88,7 @@ const style = StyleSheet.create({
         marginBottom: 10,
     },
     button: {
-        backgroundColor: '#8bbcdf',
+        backgroundColor: '#5ea3c0',
         paddingVertical: 10,
         paddingHorizontal: 32,
         borderRadius: 4,
@@ -166,7 +110,7 @@ const style = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         marginTop: 10,
-        backgroundColor: '#e1f5fe',
+        backgroundColor: '#dbebe2',
     },
     savedText: {
         fontSize: 16,
