@@ -13,7 +13,7 @@ export default function Activities() {
       <Link href="/grounding" style={styles.button}>
         <Text style={styles.buttonText}>5-4-3-2-1 Grounding</Text></Link>
       <Link href="/breathing" style={styles.button}>
-        <Text style={styles.buttonText}>2-1-4 Breathing</Text></Link>
+        <Text style={styles.buttonText}>Box Breathing</Text></Link>
     </View>
   );
 }
