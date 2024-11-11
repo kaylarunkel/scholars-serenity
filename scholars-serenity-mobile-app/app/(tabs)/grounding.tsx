@@ -65,9 +65,6 @@ export default function Grounding() {
               <Text style={styles.text}>Restart</Text>
             </Pressable>
           </View>
-          <Link href="/guide" style={styles.button}>
-            Return to Guide
-          </Link>
         </>
       ) : (<>
 
@@ -141,8 +138,9 @@ export default function Grounding() {
             />
           </>
         )}
-
-        <Button title={stage < 5 ? "Next" : "Done"} onPress={handleNext} color="#5ea3c0" />
+        <Pressable style={styles.button} onPress={handleNext}>
+          <Text style={styles.text}>{stage < 5 ? "Next" : "Done"}</Text>
+        </Pressable>
       </>)}
     </View>
   );
