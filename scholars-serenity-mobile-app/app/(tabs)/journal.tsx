@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Text, TextInput, StyleSheet, Pressable, View, ScrollView } from 'react-native';
+import { Text, TextInput, StyleSheet, Pressable, View, ScrollView, Keyboard } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 interface JournalEntry {
-  title: string;
-  entry: string;
-  prompt: string;
+    title: string;
+    entry: string;
+    prompt: string;
 }
 
 const JournalInput = () => {
@@ -14,7 +14,7 @@ const JournalInput = () => {
     const [savedEntries, setSavedEntries] = useState<JournalEntry[]>([]); // State for all saved entries
     const [titleValue, setTitleValue] = useState<string>('');
     const [currentPrompt, setCurrentPrompt] = useState(''); // State for the current prompt
-    
+
     const prompts = [
         'Write about your favorite thing to do on a day off. Why is this your favorite?',
         'Describe someone in your life who you most appreciate.',
@@ -39,6 +39,7 @@ const JournalInput = () => {
             setInputValue('');
             setTitleValue('');
         }
+        Keyboard.dismiss();
     };
 
     return (
@@ -71,7 +72,7 @@ const JournalInput = () => {
                 {savedEntries.map((entry, index) => (
                     <View key={index} style={styles.savedBox}>
                         <Text style={styles.savedPrompt}>{entry.prompt}</Text>
-                        <Text style={styles.savedText}><strong>{entry.title}</strong></Text>
+                        <Text style={styles.savedText}>{entry.title}</Text>
                         <Text>{entry.entry}</Text>
                     </View>
                 ))}
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 1,
         marginBottom: 5,
+        fontWeight: 'bold',
     },
     input: {
         paddingTop: 10,
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
         color: '#036da4',
         fontSize: 16,
         fontWeight: 'bold',
-      },
+    },
     text: {
         fontSize: 16,
         color: 'white',
