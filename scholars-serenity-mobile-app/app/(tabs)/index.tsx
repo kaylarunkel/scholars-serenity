@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React from 'react';
+import { Link } from 'expo-router';
 
 export default function Index() {
   return (
@@ -13,6 +14,11 @@ export default function Index() {
         <Ionicons name='book' size={80} color='#5ea3c0' style={styles.logo} />
       </View>
       <Text style={styles.text}>Take a deep breath and stay awhile!</Text>
+      {/*<Text style={styles.text}>Whatever you need, we are here for you!</Text> */}
+      <Link href='/activities' style={styles.button}>
+        <Text style={styles.buttonText}>Mindfulness</Text></Link>
+      <Link href="/journal" style={styles.button}>
+        <Text style={styles.buttonText}>Journal</Text></Link>
     </View>
   );
 }
@@ -56,9 +62,33 @@ const styles = StyleSheet.create({
     color: '#b9d9dc',
     textAlign: 'center',
     marginTop: 10,
+    marginBottom: 10,
   },
   logo: {
     marginLeft: 10,
+  },
+  button: {
+    backgroundColor: '#dbebe2',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 10,
+    marginBottom: 20,
+    alignItems: 'center',
+    //borderWidth: 2,
+    //borderColor: '#b9d9dc'
+  },
+  buttonText: {
+    color: '#036da4',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#036da4',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 40
   }
 });
-
