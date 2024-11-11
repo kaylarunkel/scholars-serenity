@@ -36,8 +36,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: '#b9d9dc'
   },
   buttonText: {
     color: '#036da4',
