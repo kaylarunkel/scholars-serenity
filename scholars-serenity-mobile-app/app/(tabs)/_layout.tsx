@@ -27,15 +27,6 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="guide"
-        options={{
-          title: 'Guide',
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'menu' : 'menu-outline'} color={color} size={24} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="activities"
         options={{
           title: "Mindfulness",
