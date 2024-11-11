@@ -1,26 +1,28 @@
-import { Text, View,  StyleSheet } from 'react-native';
-//import { Link } from 'expo-router';
+import { Text, View, StyleSheet } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React from 'react';
+
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeMsg1}>Scholar's</Text>
-      <Text style={styles.welcomeMsg2}>Serenity</Text>
-      <Ionicons name='book' size={100} color='#5ea3c0' style={styles.logo}></Ionicons>
-      <Text style={styles.text}>Take a deep breath and stay awhile!</Text>
+      <View style={styles.rowContainer}>
+        <View style={styles.textContainer}>
+          <Text style={styles.welcomeMsg1}>Scholar's</Text>
+          <Text style={styles.welcomeMsg2}>Serenity</Text>
+        </View>
+        <Ionicons name='book' size={80} color='#5ea3c0' style={styles.logo} />
       </View>
+      <Text style={styles.text}>Take a deep breath and stay awhile!</Text>
+    </View>
   );
 }
 
-/* 
-Color Palette: 
-Bice blue: #036da4
-Air Superiority Blue: #5ea3c0
-Light Blue: #b9d9dc
-Honeydew: #dbebe2
-Ivory: #fdfce8
-*/
+//Color Palette: 
+//Bice blue: #036da4
+//Air Superiority Blue: #5ea3c0
+//Light Blue: #b9d9dc
+//Honeydew: #dbebe2
+//Ivory: #fdfce8
 
 const styles = StyleSheet.create({
   container: {
@@ -29,30 +31,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center', 
+    justifyContent: 'center',
+    marginBottom: 5,
+  },
+  textContainer: {
+    alignItems: 'flex-end', 
+    marginRight: 0,
+  },
   welcomeMsg1: {
-    position: 'absolute',
-    //fontWeight: 'bold',
-    top: 40,
-    fontSize: 60,
+    fontSize: 60,  
     color: '#036da4',
+    textAlign: 'right',
   },
   welcomeMsg2: {
-    position: 'absolute',
-    //fontWeight: 'bold',
-    top: 87,
-    fontSize: 60,
-    color: '#036da4'
-    //color: '#8bb4cf',
+    fontSize: 60, 
+    color: '#036da4',
+    textAlign: 'right',
   },
   text: {
-    color: '#8bb4cf',
-  },
-  button: {
-    fontSize: 10,
-    color: '#030303',
+    fontSize: 18,
+    color: '#b9d9dc',
+    textAlign: 'center',
+    marginTop: 10,
   },
   logo: {
-    bottom : 220,
-    left: 180
+    marginLeft: 10,
   }
 });
+
