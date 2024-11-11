@@ -6,6 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 interface JournalEntry {
   title: string;
   entry: string;
+  prompt: string;
 }
 
 const JournalInput = () => {
@@ -19,11 +20,11 @@ const JournalInput = () => {
         'Describe someone in your life who you most appreciate.',
         'Write about something that made you smile recently.',
         'What is one kind or supportive thing you can say to yourself?',
-        "How did I win today?",
-        "What do I really need in this moment?",
-        "How am I really feeling today?",
-        "What is making me feel anxious today?",
-        "What am I grateful for today?"
+        "How did you win today?",
+        "What do you really need in this moment?",
+        "How are you really feeling today?",
+        "What is making you feel anxious today?",
+        "What are you grateful for today?"
     ];
 
     // Generate random prompt from list
@@ -34,7 +35,7 @@ const JournalInput = () => {
 
     const handleSave = () => {
         if (inputValue.trim() && titleValue.trim()) {
-            setSavedEntries([...savedEntries, { title: titleValue, entry: inputValue }]);
+            setSavedEntries([...savedEntries, { title: titleValue, entry: inputValue, prompt: currentPrompt }]);
             setInputValue('');
             setTitleValue('');
         }
@@ -44,7 +45,7 @@ const JournalInput = () => {
         <SafeAreaView style={styles.container}>
             <Text style={styles.promptText}>{currentPrompt}</Text>
             <Pressable style={styles.button} onPress={generatePrompt}>
-                <Text><Ionicons name="refresh" color='white'></Ionicons></Text>
+                <Text style={styles.text}> New Prompt <Ionicons name="refresh" color='white'></Ionicons></Text>
             </Pressable>
 
             <TextInput
@@ -69,6 +70,7 @@ const JournalInput = () => {
             <ScrollView style={styles.entriesContainer}>
                 {savedEntries.map((entry, index) => (
                     <View key={index} style={styles.savedBox}>
+                        <Text style={styles.savedPrompt}>{entry.prompt}</Text>
                         <Text style={styles.savedText}><strong>{entry.title}</strong></Text>
                         <Text>{entry.entry}</Text>
                     </View>
@@ -138,6 +140,12 @@ const styles = StyleSheet.create({
     savedText: {
         fontSize: 16,
         color: '#333',
+    },
+
+    savedPrompt: {
+        fontSize: 18,
+        fontWeight: 700,
+        marginBottom: 5,
     },
 });
 
