@@ -198,8 +198,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     color: '#036da4',
     fontWeight: 'bold',
-    borderWidth: 2,
-    borderColor: '#b9d9dc'
   },
   text: {
     color: '#036da4',
