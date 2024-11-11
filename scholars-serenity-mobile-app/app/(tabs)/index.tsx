@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    color: '#b9d9dc',
+    color: '#5ea3c0',
     textAlign: 'center',
     marginTop: 10,
     marginBottom: 10,
