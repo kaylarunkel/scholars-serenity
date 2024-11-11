@@ -45,7 +45,7 @@ const JournalInput = () => {
         <SafeAreaView style={styles.container}>
             <Text style={styles.promptText}>{currentPrompt}</Text>
             <Pressable style={styles.button} onPress={generatePrompt}>
-                <Text style={styles.text}> New Prompt <Ionicons name="refresh" color='white'></Ionicons></Text>
+                <Text style={styles.buttonText}> New Prompt <Ionicons name="refresh" color='#036da4'></Ionicons></Text>
             </Pressable>
 
             <TextInput
@@ -64,7 +64,7 @@ const JournalInput = () => {
                 onChangeText={setInputValue}
             />
             <Pressable style={styles.button} onPress={handleSave}>
-                <Text style={styles.text}>Save</Text>
+                <Text style={styles.buttonText}>Save</Text>
             </Pressable>
 
             <ScrollView style={styles.entriesContainer}>
@@ -108,13 +108,25 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     button: {
-        backgroundColor: '#5ea3c0',
+        backgroundColor: '#dbebe2',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        marginTop: 10,
+        marginBottom: 20,
+        alignItems: 'center',
+        /*backgroundColor: '#5ea3c0',
         paddingVertical: 10,
         paddingHorizontal: 32,
         borderRadius: 4,
         elevation: 3,
-        marginBottom: 10,
+        marginBottom: 10, */
     },
+    buttonText: {
+        color: '#036da4',
+        fontSize: 16,
+        fontWeight: 'bold',
+      },
     text: {
         fontSize: 16,
         color: 'white',
@@ -150,3 +162,4 @@ const styles = StyleSheet.create({
 });
 
 export default JournalInput;
+
