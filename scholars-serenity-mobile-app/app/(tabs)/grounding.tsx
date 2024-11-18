@@ -12,7 +12,7 @@ export default function Grounding() {
 
   const [done, setDone] = useState(false);
 
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
 
   type Sense = 'see' | 'touch' | 'hear' | 'smell' | 'taste';
 
